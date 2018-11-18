@@ -5,7 +5,7 @@ Making a nomogram with Python and Postscript
 :tags: python, postscript, nomogram
 :author: Roland Smith
 
-.. Last modified: 2018-11-18T11:37:02+0100
+.. Last modified: 2018-11-18T11:46:02+0100
 
 Introduction
 ------------
@@ -73,3 +73,8 @@ Requirements
 .. _python: https://www.python.org/
 .. _ghostscript: https://www.ghostscript.com/
 
+
+License
+-------
+
+MIT. See LICENSE.txt.
