@@ -4,7 +4,7 @@
 # Copyright © 2018 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2018-11-14T19:32:44+0100
-# Last modified: 2018-11-17T10:15:47+0100
+# Last modified: 2018-11-18T10:16:21+0100
 """Create a nomogram for gelcoat/peroxide ratio"""
 
 import math
@@ -16,17 +16,19 @@ print('(units.inc) runlibfile')
 print('/Alegreya-Regular findfont 12 scalefont setfont')
 print('2 setlinecap')
 
-# Parameters van de assen
+# Axis locations
 xgel = 20  # mm
 xper = 80  # mm
 
 
 def ygel(g):
+    """Calculates the y position for a given amount of gelcoat."""
     return 10 + (g - 600) * 1
 
 
 def yper(p):
-    return 100 + (p - 12)*-10  # mm
+    """Calculates the y position for a given amount of peroxide."""
+    return 100 + (p - 12) * -10  # mm
 
 
 # Gelcoat axis with markings
@@ -73,8 +75,10 @@ p6 = (xper, yper(21))
 ln3 = line(p1, p5)
 ln4 = line(p3, p6)
 intersect3 = intersect(ln3, ln4)
-print(f'{intersect2[0]} mm {intersect2[1]} mm moveto '
-      f'{intersect3[0]} mm {intersect3[1]} mm lineto stroke')
+print(
+    f'{intersect2[0]} mm {intersect2[1]} mm moveto '
+    f'{intersect3[0]} mm {intersect3[1]} mm lineto stroke'
+)
 dx = intersect2[0] - intersect3[0]
 dy = intersect2[1] - intersect3[1]
 dist = math.sqrt(dx * dx + dy * dy)
@@ -83,9 +87,9 @@ angle = math.degrees(math.atan2(dy, dx)) - 90
 # ratio axis markings
 constructie = {}
 for p in range(200, 301):
-    pp = p/100
-    A, B = (xgel, ygel(600)), (xper, yper(pp/100*600))
-    C, D = (xgel, ygel(700)), (xper, yper(pp/100*700))
+    pp = p / 100
+    A, B = (xgel, ygel(600)), (xper, yper(pp / 100 * 600))
+    C, D = (xgel, ygel(700)), (xper, yper(pp / 100 * 700))
     l1 = line(A, B)
     l2 = line(C, D)
     ip = intersect(l1, l2)
@@ -118,12 +122,11 @@ for color, perc in zip(['1 0 0', '0 1 0', '0 0 1'], [2, 2.5, 3]):
     print('stroke')
 print('grestore')
 
-print('0 setgray')
 # Header for gelcoat
 print(f'{xgel} mm {ygel(710)} mm moveto (gelcoat) align_middle')
 print(f'{xgel} mm {ygel(705)} mm moveto ([g/30s]) align_middle')
 # Header for peroxide
-print(f'{xper} mm {yper(11)} mm moveto (butanox P-50) align_middle')
+print(f'{xper} mm {yper(11)} mm moveto (peroxide) align_middle')
 print(f'{xper} mm {yper(11.5)} mm moveto ([g/30s]) align_middle')
 # Header for ratio
 print('65 mm 90 mm moveto (ratio) align_middle')
