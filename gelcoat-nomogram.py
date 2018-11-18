@@ -4,7 +4,7 @@
 # Copyright © 2018 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2018-11-14T19:32:44+0100
-# Last modified: 2018-11-18T10:15:33+0100
+# Last modified: 2018-11-18T13:55:41+0100
 """Create a nomogram for gelcoat/peroxide ratio"""
 
 import math
@@ -107,8 +107,6 @@ for p in range(200, 301):
         print('0 0 moveto -2 mm 0 lineto stroke')
         print('grestore')
     print('grestore')
-
-print('65 mm 90 mm moveto (ratio) align_middle')
 
 # Example reading
 print('gsave')
