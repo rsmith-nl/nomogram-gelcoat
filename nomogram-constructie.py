@@ -4,7 +4,7 @@
 # Copyright © 2018 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2018-11-14T19:32:44+0100
-# Last modified: 2018-11-18T10:16:21+0100
+# Last modified: 2018-11-18T16:08:46+0100
 """Create a nomogram for gelcoat/peroxide ratio"""
 
 import math
@@ -99,8 +99,7 @@ for p in range(200, 301):
     print(f'{angle} rotate')
     if p % 10 == 0:
         print('0 0 moveto -5 mm 0 lineto stroke')
-        val = f'{pp:.1f}'.replace('.', ',')
-        print(f'-10 mm 0 moveto ({val} %) align_center')
+        print(f'-10 mm 0 moveto ({pp:.1f} %) align_center')
     elif p % 5 == 0:
         print('0 0 moveto -2.5 mm 0 lineto stroke')
     else:
