@@ -3,7 +3,7 @@
 #
 # Copyright © 2018 R.F. Smith <rsmith@xs4all.nl>
 # Created: 2018-11-14T19:44:33+0100
-# Last modified: 2018-11-18T14:50:47+0100
+# Last modified: 2020-07-13T15:31:01+0200
 .SUFFIXES:
 .SUFFIXES: .pdf .eps .py .png
 .PHONY: all clean
@@ -18,7 +18,8 @@ all: gelcoat-nomogram.pdf gelcoat-nomogram.png nomogram-constructie.pdf \
 
 .eps.pdf:
 	gs -q -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dEPSCrop \
-		-sOutputFile=$@ -c .setpdfwrite -f $<
+		-dCompatibilityLevel=1.5 \
+		-sOutputFile=$@ -f $<
 
 .py.eps: Makefile
 	python3 $< >body.ps
