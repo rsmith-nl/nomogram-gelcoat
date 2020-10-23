@@ -22,7 +22,7 @@ def line(p, q):
     (px, py), (qx, qy) = p, q
     dx, dy = px - qx, py - qy
     if dx == 0:
-        raise ValueError('y is not a function of x')
+        raise ValueError("y is not a function of x")
     a = dy / dx
     b = py - a * px
     return (a, b)
@@ -40,7 +40,7 @@ def intersect(p, q):
     """
     (a, b), (c, d) = p, q
     if a == c:
-        raise ValueError('parallel lines')
+        raise ValueError("parallel lines")
     x = (d - b) / (a - c)
-    y = a*x + b
+    y = a * x + b
     return (x, y)
